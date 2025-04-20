@@ -7,6 +7,8 @@ public class AccountTest extends BaseTest {
 
     @Test
     public void firstTest() {
-        driver.get("https://www.google.com/");
+        loginSteps
+                .open()
+                .login(username, password);
     }
 }

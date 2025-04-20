@@ -1,9 +1,7 @@
 package driver;
 
 import org.openqa.selenium.WebDriver;
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class WebDriverSingleton {
     private static WebDriver driver;
