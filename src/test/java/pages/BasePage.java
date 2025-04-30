@@ -10,7 +10,7 @@ import java.time.Duration;
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    // protected final static String ACTIVE_TAB_LOCATOR = "//div[contains(@class,'active')]";
+    protected final static String ACTIVE_TAB_LOCATOR = "//div[contains(@class,'active')]";
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
