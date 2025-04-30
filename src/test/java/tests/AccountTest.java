@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import models.Account;
 import models.AccountFactory;
 import org.testng.annotations.Test;
@@ -7,7 +8,8 @@ import org.testng.annotations.Test;
 public class AccountTest extends BaseTest {
     AccountFactory accountFactory = new AccountFactory();
 
-    @Test
+    @Description("Ent to End Account Test")
+    @Test(testName = "Account Test")
     public void firstTest() {
         loginSteps
                 .open()

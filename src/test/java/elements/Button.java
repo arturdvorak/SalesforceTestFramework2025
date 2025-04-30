@@ -1,6 +1,7 @@
 package elements;
 
 import driver.JSUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,7 @@ public class Button extends BaseElement {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    @Step("Click using JavaScript")
     public void clickUsingJavaScript() {
         JSUtils.clickUsingJavaScript(driver, driver.findElement(By.xpath(String.format(BUTTON_LOCATOR, title, title, title, title))));
     }
