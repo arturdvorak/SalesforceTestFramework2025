@@ -2,6 +2,7 @@ package pages;
 
 import driver.JSUtils;
 import elements.*;
+import io.qameta.allure.Step;
 import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,12 +18,13 @@ public class AccountViewPage extends BasePage {
         super(driver);
     }
 
+    @Step("Update Account in Account View page")
     public AccountListPage updateOpenAccount(Account account) {
         driver.findElement(TAB_DETAILS).click();
         driver.findElement(FIELD_ACCOUNT_NAME_EDIT).click();
         waitForPageLoaded();
         new LightningInput(driver, "Account Name").fillInput(account.getAccountName());
-        new LightningLookUp(driver, "Parent Account").select(account.getParentAccount());
+        new LightningLookUp(driver, "Parent Account").selectValue(account.getParentAccount());
         new LightningInput(driver, "Account Number").fillInput(Integer.toString(account.getAccountNumber()));
         new LightningInput(driver, "Account Site").fillInput(account.getAccountSite());
         new LightningDropDown(driver, "Type").select(account.getType());
@@ -57,6 +59,7 @@ public class AccountViewPage extends BasePage {
         return new AccountListPage(driver);
     }
 
+    @Step("Validate account in Account List Page")
     public AccountListPage validateAccountData(Account account) {
         driver.findElement(TAB_DETAILS).click();
         waitForPageLoaded();
@@ -95,6 +98,7 @@ public class AccountViewPage extends BasePage {
         return new AccountListPage(driver);
     }
 
+    @Step("Delete Account by JavaScript click")
     public AccountListPage deleteAccountByName(Account account) {
         JSUtils.clickUsingJavaScript(driver,
                 driver.findElement(By.xpath(String.format(SHOW_MORE_BUTTON_IN_TABLE_ROW, account.getAccountName()))));

@@ -32,6 +32,7 @@ public class AccountSteps {
         return this;
     }
 
+    @Step("Account validation")
     public AccountSteps validationOfAccount(Account account) {
         accountListPage
                 .openPage()
@@ -41,6 +42,7 @@ public class AccountSteps {
         return this;
     }
 
+    @Step("Account updating")
     public AccountSteps updateAccount(Account account, Account account_updated) {
         accountListPage
                 .openPage()
@@ -50,6 +52,7 @@ public class AccountSteps {
         return this;
     }
 
+    @Step("Account removal")
     public AccountSteps removeAccount(Account account_updated) {
         accountListPage
                 .openPage();

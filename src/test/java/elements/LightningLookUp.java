@@ -1,11 +1,10 @@
 package elements;
 
 import driver.JSUtils;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class LightningLookUp extends BaseElement {
     private static final String LOCATOR_LOOKUP = "//label[text() = '%s']/ancestor::lightning-lookup";
@@ -17,7 +16,8 @@ public class LightningLookUp extends BaseElement {
         super(driver, title);
     }
 
-    public void select(String text) {
+    @Step("Select by JavaScript {text} in drop-down")
+    public void selectValue(String text) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         if (driver.findElements(By.xpath(String.format(DROPDOWN_REMOVE_BUTTON, title))).size() > 0) {
             JSUtils.clickUsingJavaScript(driver, driver.findElement(By.xpath(String.format(DROPDOWN_REMOVE_BUTTON, title))));

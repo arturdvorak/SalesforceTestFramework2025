@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 public class AccountTest extends BaseTest {
     AccountFactory accountFactory = new AccountFactory();
 
-    @Description("Ent to End Account Test")
-    @Test(testName = "Account Test")
+    @Description("Account creation and validation, account update and validation and account removal.")
+    @Test(testName = "End to End Account Test: ")
     public void firstTest() {
         loginSteps
                 .open()

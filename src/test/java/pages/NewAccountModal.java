@@ -1,6 +1,7 @@
 package pages;
 
 import elements.*;
+import io.qameta.allure.Step;
 import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,10 +14,11 @@ public class NewAccountModal extends BasePage {
         super(driver);
     }
 
+    @Step("Fill all fields in New Account Modal dialog")
     public NewAccountModal fillOutNewContactModal(Account account) {
         waitForPageLoaded();
         new LightningInput(driver, "Account Name").fillInput(account.getAccountName());
-        new LightningLookUp(driver, "Parent Account").select(account.getParentAccount());
+        new LightningLookUp(driver, "Parent Account").selectValue(account.getParentAccount());
         new LightningInput(driver, "Account Number").fillInput(Integer.toString(account.getAccountNumber()));
         new LightningInput(driver, "Account Site").fillInput(account.getAccountSite());
         new LightningDropDown(driver, "Type").select(account.getType());
@@ -49,6 +51,7 @@ public class NewAccountModal extends BasePage {
         return this;
     }
 
+    @Step("Save Account")
     public AccountListPage saveAccount(Account account) {
         new Button(driver,"Save").click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(ENTITY_NAME_TITLE_LOCATOR, account.getAccountName()))));

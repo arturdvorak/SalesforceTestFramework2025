@@ -1,6 +1,7 @@
 package pages;
 
 import elements.Button;
+import io.qameta.allure.Step;
 import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,21 +18,25 @@ public class AccountListPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open Account List Page")
     public AccountListPage openPage() {
         driver.get(URL_ACCOUNT_TAB);
         return this;
     }
 
+    @Step("Open Account Modal dialog")
     public NewAccountModal openNewAccountModal() {
         new Button(driver, "New").click();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(TITLE_NEW_ACCOUNT_IN_MODAL)));
         return new NewAccountModal(driver);
     }
 
+    @Step("Get link to an account")
     public String getAccountLink(Account account) {
         return driver.findElement(By.xpath(String.format("//*[text()='%s']", account.getAccountName()))).getAttribute("href");
     }
 
+    @Step("Open Account View Page")
     public AccountViewPage openAccount(Account account) {
         driver.get(getAccountLink(account));
         wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE_ACCOUNT_IN_PANEL));

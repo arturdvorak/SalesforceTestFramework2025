@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @Step("Open login page")
+    @Step("Open Login page by login URL")
     public void openPage () {
         driver.get(BaseTest.loginUrl);
     }

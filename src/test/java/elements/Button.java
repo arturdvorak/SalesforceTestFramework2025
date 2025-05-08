@@ -16,6 +16,7 @@ public class Button extends BaseElement {
         super(driver, title);
     }
 
+    @Step("Click button")
     public void click() {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         if (driver.findElements(By.xpath(MODAL_LOCATOR)).size() > 0) {
@@ -28,7 +29,7 @@ public class Button extends BaseElement {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @Step("Click using JavaScript")
+    @Step("Click button using JavaScript")
     public void clickUsingJavaScript() {
         JSUtils.clickUsingJavaScript(driver, driver.findElement(By.xpath(String.format(BUTTON_LOCATOR, title, title, title, title))));
     }

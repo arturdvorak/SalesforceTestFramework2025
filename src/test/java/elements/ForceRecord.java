@@ -1,5 +1,6 @@
 package elements;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
@@ -17,6 +18,7 @@ public class ForceRecord extends BaseElement {
         super(driver, title);
     }
 
+    @Step("Click Force Record")
     public void validateFieldValue(String text) {
         new SoftAssert().assertEquals(driver.findElement(By.xpath(String.format(FIELD_LOCATOR, title, title, title, title, title, title))).getText(), text,
                 String.format("'%s' value is saved incorrectly.", title));

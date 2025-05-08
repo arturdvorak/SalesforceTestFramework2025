@@ -1,5 +1,6 @@
 package elements;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ public class LightningInput extends BaseElement {
         super(driver, title);
     }
 
+    @Step("Fill input by {text}")
     public void fillInput(String text) {
         WebElement element = driver.findElement(By.xpath(String.format(INPUT_LOCATOR, title)));
         wait.until(ExpectedConditions.visibilityOf(element));
