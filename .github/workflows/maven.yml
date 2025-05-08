@@ -29,3 +29,20 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean test
+    - name: Install Allure CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y default-jre
+        curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/latest/download/allure-2.27.0.zip
+        unzip -o allure.zip -d /opt/
+        sudo ln -s /opt/allure-2.27.0/bin/allure /usr/bin/allure
+
+    - name: Generate Allure Report
+      run: |
+        allure generate target/allure-results --clean -o target/allure-report
+
+    - name: Upload Allure HTML Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: target/allure-report/
